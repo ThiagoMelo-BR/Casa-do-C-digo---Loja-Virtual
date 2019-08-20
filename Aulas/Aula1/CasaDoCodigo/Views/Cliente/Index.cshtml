@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Cadastros";
+}
+
+@model IList<Cadastro>
+
+<h2>Cadastros</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="pull-right">        
+            <a class="btn btn-success" asp-action="cadastro" asp-controller="pedido">
+                Preencher cadastro
+            </a>
+        </div>
+    </div>
+</div>
+
+<table class="table table-hover" id="tabelaProdutos">
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var cadastro in Model)
+        {
+        <tr id="linhaProduto@(cadastro.Id)">
+            <td>@cadastro.Id</td>
+            <td>@cadastro.Nome</td>
+            <td>@cadastro.Endereco</td>
+            <td>@Html.ActionLink("Selecionar", "Cadastro","Pedido", new { id = cadastro.Id })</td>
+        </tr>
+        }
+    </tbody>
+</table>
